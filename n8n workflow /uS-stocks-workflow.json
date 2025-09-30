@@ -1,0 +1,859 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "name": "interval",
+              "value": "1min"
+            },
+            {
+              "name": "outputsize",
+              "value": "100"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e2f79bfd-5c8c-4587-8555-6ba957c9f178",
+      "name": "HTTP 1 Minutes"
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "name": "interval",
+              "value": "15min"
+            },
+            {
+              "name": "outputsize",
+              "value": "100"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        192
+      ],
+      "id": "c046b10f-75e6-4072-8d13-fbf4e50deed1",
+      "name": "HTTP 15 Minutes"
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/time_series",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "name": "interval",
+              "value": "1h"
+            },
+            {
+              "name": "outputsize",
+              "value": "100"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        384
+      ],
+      "id": "ce7ce6a6-4751-4564-9755-fd9c692623c8",
+      "name": "HTTP 1 Hour"
+    },
+    {
+      "parameters": {
+        "url": "https://newsapi.org/v2/everything",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "name": "from",
+              "value": "={{ $today.minus({days:4}).toFormat('yyyy-MM-dd') }}"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_NEWSAPI_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        1136
+      ],
+      "id": "0d467e41-abee-4236-8f87-e92bb80b6e7b",
+      "name": "News API"
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/dividends",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        576
+      ],
+      "id": "51314570-022a-45e7-8da9-6b451614badb",
+      "name": "HTTP Dividends"
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/earnings",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        768
+      ],
+      "id": "19ed1b14-332f-4f33-9051-6dd49bc54a2f",
+      "name": "HTTP Earnings"
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/statistics",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        960
+      ],
+      "id": "71352c1b-b49e-44b0-9c02-fe95c6e48799",
+      "name": "HTTP Statistics"
+    },
+    {
+      "parameters": {
+        "url": "https://api.twelvedata.com/profile",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "symbol",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "name": "apikey",
+              "value": "YOUR_TWELVEDATA_API_KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        1520
+      ],
+      "id": "42bf6030-4897-4a9b-ad6d-a2f934782a7f",
+      "name": "HTTP Profile"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        224,
+        176
+      ],
+      "id": "0e22c5f6-a074-4ae1-a757-1e376636f35e",
+      "name": "Merge Timeframes"
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        224,
+        832
+      ],
+      "id": "9efc3f45-65ba-4781-9c34-6cab4e267d0d",
+      "name": "Merge Fundamentals"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        448,
+        192
+      ],
+      "id": "a1c81861-5032-484e-a04e-90d19283f927",
+      "name": "Aggregate Price Data"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        448,
+        864
+      ],
+      "id": "e33e9ab9-3143-4783-b3a0-204920ef341d",
+      "name": "Aggregate Fundamentals"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process and normalize stock data from multiple timeframes\nfunction normalize(values) {\n    return values.map(v => ({\n        time: new Date(v.datetime),\n        open: parseFloat(v.open),\n        high: parseFloat(v.high),\n        low: parseFloat(v.low),\n        close: parseFloat(v.close),\n    }));\n}\n\n// Sort function for chronological order\nfunction sort(a, b) {\n    return a.time - b.time;\n}\n\n// Process each input item (different timeframes)\nconst result = $input.all().map(item => {\n    // Access the first element of the data array\n    const firstDataItem = item.json.data[0];\n    return {\n        json: {\n            ticker: firstDataItem.meta.symbol,\n            timeframe: firstDataItem.meta.interval,\n            candles: normalize(firstDataItem.values).sort(sort)\n        }\n    };\n});\n\n// Return the processed data\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        192
+      ],
+      "id": "78a28c54-719f-4b6b-8d9b-c26e98ad7bb9",
+      "name": "Process Candle Data"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process fundamental data for long-term investment analysis\nconst inputData = $input.all();\nlet result = {};\n\n// Helper function to safely get nested values\nfunction safeGet(obj, path, defaultValue = null) {\n    try {\n        return path.split('.').reduce((o, p) => o && o[p], obj) ?? defaultValue;\n    } catch {\n        return defaultValue;\n    }\n}\n\n// Process each fundamental data source\ninputData.forEach(item => {\n    const data = item.json;\n    \n    // Check data source and extract relevant information\n    if (data.dividends) {\n        // Dividend data processing\n        result.dividends = {\n            data: data.dividends,\n            count: data.dividends?.length || 0,\n            latest: data.dividends?.[0] || null,\n            annualDividend: calculateAnnualDividend(data.dividends)\n        };\n    }\n    \n    if (data.earnings) {\n        // Earnings data processing\n        result.earnings = {\n            data: data.earnings,\n            latest: data.earnings?.[0] || null,\n            epsGrowth: calculateEPSGrowth(data.earnings)\n        };\n    }\n    \n    if (data.statistics) {\n        // Statistics data processing\n        result.statistics = {\n            peRatio: safeGet(data, 'statistics.valuations_metrics.pe_ratio'),\n            pegRatio: safeGet(data, 'statistics.valuations_metrics.peg_ratio'),\n            priceToBook: safeGet(data, 'statistics.valuations_metrics.pb_ratio'),\n            roe: safeGet(data, 'statistics.financials_metrics.return_on_equity'),\n            roa: safeGet(data, 'statistics.financials_metrics.return_on_assets'),\n            debtToEquity: safeGet(data, 'statistics.financials_metrics.debt_equity_ratio'),\n            currentRatio: safeGet(data, 'statistics.financials_metrics.current_ratio'),\n            dividendYield: safeGet(data, 'statistics.financials_metrics.dividend_yield')\n        };\n    }\n    \n    if (data.symbol || data.name) {\n        // Company profile data\n        result.profile = {\n            symbol: data.symbol,\n            name: data.name,\n            country: data.country,\n            sector: data.sector,\n            industry: data.industry,\n            website: data.website,\n            description: data.description\n        };\n    }\n});\n\n// Helper functions\nfunction calculateAnnualDividend(dividends) {\n    if (!dividends || dividends.length === 0) return 0;\n    \n    const oneYearAgo = new Date();\n    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);\n    \n    return dividends\n        .filter(d => new Date(d.ex_date) >= oneYearAgo)\n        .reduce((sum, d) => sum + parseFloat(d.amount || 0), 0);\n}\n\nfunction calculateEPSGrowth(earnings) {\n    if (!earnings || earnings.length < 2) return null;\n    \n    const latest = parseFloat(earnings[0]?.eps_estimate || earnings[0]?.eps_actual || 0);\n    const previous = parseFloat(earnings[1]?.eps_estimate || earnings[1]?.eps_actual || 0);\n    \n    if (previous === 0) return null;\n    return ((latest - previous) / previous) * 100;\n}\n\n// Calculate long-term investment metrics\nfunction calculateLongTermMetrics() {\n    const metrics = {};\n    \n    // Dividend yield and growth\n    if (result.statistics?.dividendYield) {\n        metrics.dividendYield = parseFloat(result.statistics.dividendYield);\n    }\n    \n    // Expected annual return estimation\n    let expectedReturn = 0;\n    let returnComponents = [];\n    \n    // Add dividend yield to expected return\n    if (metrics.dividendYield) {\n        expectedReturn += metrics.dividendYield;\n        returnComponents.push(`Dividend Yield: ${metrics.dividendYield.toFixed(2)}%`);\n    }\n    \n    // Add earnings growth estimation\n    if (result.earnings?.epsGrowth && result.earnings.epsGrowth > 0) {\n        const growthContribution = Math.min(result.earnings.epsGrowth, 15); // Cap at 15%\n        expectedReturn += growthContribution;\n        returnComponents.push(`Earnings Growth: ${growthContribution.toFixed(2)}%`);\n    }\n    \n    // Adjust based on valuation metrics (P/E ratio)\n    if (result.statistics?.peRatio) {\n        const pe = parseFloat(result.statistics.peRatio);\n        if (pe > 0) {\n            let valuationAdjustment = 0;\n            if (pe < 15) valuationAdjustment = 2; // Undervalued bonus\n            else if (pe > 25) valuationAdjustment = -3; // Overvalued penalty\n            \n            expectedReturn += valuationAdjustment;\n            if (valuationAdjustment !== 0) {\n                returnComponents.push(`Valuation Adjustment: ${valuationAdjustment.toFixed(2)}%`);\n            }\n        }\n    }\n    \n    metrics.expectedAnnualReturn = Math.max(0, expectedReturn); // Ensure non-negative\n    metrics.returnComponents = returnComponents;\n    \n    return metrics;\n}\n\nresult.longTermMetrics = calculateLongTermMetrics();\n\n// Return processed fundamental data\nreturn [{\n    json: {\n        fundamentalAnalysis: result,\n        stockSymbol: result.profile?.symbol || 'Unknown',\n        stockName: result.profile?.name || 'Unknown Company'\n    }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        864
+      ],
+      "id": "094d9d63-8777-492a-bc43-c470f4419740",
+      "name": "Process Long-term Metrics"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1248,
+        848
+      ],
+      "id": "2ba7c01c-ccd5-40f1-b63b-696baff03276",
+      "name": "Merge Data & Sentiment & Fundamentals"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1472,
+        864
+      ],
+      "id": "41e024e2-0d8f-4256-a8c4-5ef357b9d57c",
+      "name": "Aggregate Final Data"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert financial analyst providing both day trading and long-term investment recommendations. Using the comprehensive data below, provide both short-term trading advice and long-term investment analysis.\n\nDATA SOURCES:\n- Technical Data (candles): {{ JSON.stringify ($json.data[0]) }}\n- Sentiment Analysis (past 24h): {{ JSON.stringify ($json.data[1]) }}\n- Fundamental Analysis (long-term): {{ JSON.stringify ($json.data[2]) }}\n\nINSTRUCTIONS:\n1. Analyze technical data for short-term trading (1m, 15m, 1h timeframes)\n2. Factor in sentiment for immediate market reaction\n3. Use fundamental data for long-term investment assessment\n4. Include dividend analysis, earnings growth, and valuation metrics\n5. Calculate expected annual return based on fundamentals\n\nThe fundamental data includes:\n- Company profile (name, sector, industry)\n- Dividend information and yield\n- Earnings data and growth\n- Financial ratios (P/E, ROE, debt-to-equity, etc.)\n- Expected annual return calculation\n\nProvide comprehensive analysis covering both timeframes.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are an expert financial analyst. Provide comprehensive trading and investment recommendations in the exact format below:\n\n### COMPANY INFORMATION\n- Stock Name: <Company Name>\n- Stock Symbol: <Symbol>\n- Sector: <Sector>\n- Industry: <Industry>\n\n### SHORT-TERM TRADING (Day Trading)\n- Technical Recommendation: `<BUY|SELL|HOLD>`\n- Entry Price: `<number or N/A>`\n- Stop-Loss: `<number or N/A>`\n- Target/Exit Price: `<number or N/A>`\n- Trading Rationale: <Brief explanation>\n\n### LONG-TERM INVESTMENT (1+ Years)\n- Investment Recommendation: `<BUY|HOLD|AVOID>`\n- Current Dividend Yield: `<percentage or N/A>`\n- Expected Annual Return: `<percentage>`\n- P/E Ratio: `<number or N/A>`\n- Key Strengths: <List 2-3 strengths>\n- Key Risks: <List 2-3 risks>\n- Investment Rationale: <Detailed explanation>\n\n### OVERALL ASSESSMENT\n- Risk Level: `<LOW|MEDIUM|HIGH>`\n- Time Horizon Preference: `<SHORT-TERM|LONG-TERM|BOTH>`\n- Final Summary: <Comprehensive summary>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        1744,
+        864
+      ],
+      "id": "115e65ed-5cc8-4782-8f50-1eeeef8e0270",
+      "name": "AI Financial Analyst"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        1696,
+        1088
+      ],
+      "id": "436c0388-1f71-4720-bafd-71532749c965",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "Ebx4ZO9xHiIqOYpc",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4o-mini"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a highly intelligent and accurate sentiment analyzer specializing in financial markets.\n\nFirst, validate the input data:\n1. Check if the stock symbol is valid.\n2. Check if there are any articles to analyze.\n\nIf the stock symbol is valid and there are articles to analyze, proceed with the following steps:\nAnalyze the sentiment of the provided text.\nEvaluate the immediate market reaction, recent news impact, and technical volatility.\nDetermine a sentiment category: \"Positive\", \"Neutral\", or \"Negative\".\nCalculate a numerical score between -1 (extremely negative) and 1 (extremely positive).\nProvide a concise rationale explaining the short-term sentiment (give a detailed response with appropriate headings for major points).\n\nYour output must be exactly a JSON object. The value must be an object with three keys: \"category\", \"score\", and \"rationale\". Do not output any additional text.\n{{ $json.articles }}\n",
+              "role": "system"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        896,
+        1232
+      ],
+      "id": "0899140c-73ca-482c-91be-35319b754d6f",
+      "name": "Sentiment Analysis",
+      "credentials": {
+        "openAiApi": {
+          "id": "9O3Vn8pB5ov2pe8C",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {
+          "userIds": "YOUR_TELEGRAM_USER_ID"
+        }
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -672,
+        704
+      ],
+      "id": "8c415a47-d48c-46b3-ab7b-fcb61ed50abd",
+      "name": "Telegram Trigger",
+      "webhookId": "YOUR_TELEGRAM_WEBHOOK_ID",
+      "credentials": {
+        "telegramApi": {
+          "id": "SLsN8fapokXPUbkB",
+          "name": "Telegram account Stocks"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $fromAI('Text', ``, 'string') }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTool",
+      "typeVersion": 1.2,
+      "position": [
+        1952,
+        1088
+      ],
+      "id": "edd4d74d-d161-4ab6-b339-2bbe90cf929f",
+      "name": "Send a text message in Telegram",
+      "webhookId": "YOUR_TELEGRAM_TOOL_WEBHOOK_ID"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        672,
+        1232
+      ],
+      "id": "b41d259c-00fb-4634-b519-6078d9d608ca",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "url": "=https://news.google.com/rss/search?q= {{ $json.message.text }}%20when%3A1d&hl=en-US&gl=US&ceid=US%3Aen",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        1248
+      ],
+      "id": "5f9bcd67-48e0-46b2-ac9f-e7965671e0fa",
+      "name": "Google News"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        256,
+        1456
+      ],
+      "id": "ec749e52-5737-4fbd-9f69-9880aaea90a4",
+      "name": "XML"
+    },
+    {
+      "parameters": {
+        "jsCode": "const newsData = $input.all();\n\nasync function fetchArticleContent(url) {\n    try {\n        // Use n8n's HTTP client to fetch the article\n        const response = await fetch(url);\n\n        if (!response.ok) {\n            throw new Error(`HTTP error! status: ${response.status}`);\n        }\n\n        const html = await response.text();\n\n        // Create a DOM parser to extract content\n        const parser = new DOMParser();\n        const doc = parser.parseFromString(html, 'text/html');\n\n        // Try different selectors to find the main article content\n        const selectors = [\n            'article',\n            '.article-body',\n            '.post-content',\n            '.story-body',\n            '.entry-content',\n            '[itemprop=\"articleBody\"]',\n            '[role=\"article\"]'\n        ];\n\n        let articleText = '';\n        for (const selector of selectors) {\n            const elements = doc.querySelectorAll(selector);\n            if (elements.length > 0) {\n                for (const el of elements) {\n                    articleText += ' ' + el.textContent;\n                }\n                break;\n            }\n        }\n\n        // If we couldn't find a specific article container, try paragraphs\n        if (articleText.length < 100) {\n            const paragraphs = doc.querySelectorAll('p');\n            articleText = '';\n            for (const p of paragraphs) {\n                const text = p.textContent.trim();\n                // Skip short paragraphs that might be ads or captions\n                if (text.length > 50 &&\n                    !text.includes('Advertisement') &&\n                    !text.includes('Subscribe') &&\n                    !text.includes('Follow us')) {\n                    articleText += ' ' + text;\n                }\n            }\n        }\n\n        // Clean up the text\n        return articleText\n            .replace(/\\s+/g, ' ')\n            .trim();\n    } catch (error) {\n        console.error(`Error fetching article from ${url}:`, error);\n        return null;\n    }\n}\n\nfunction generateSummaryFromContent(content, maxLength = 200) {\n    if (!content) return null;\n\n    // Take the first part of the content up to maxLength\n    let summary = content.substring(0, maxLength);\n\n    // Try to end at a sentence boundary\n    const lastPeriod = summary.lastIndexOf('.');\n    if (lastPeriod > 0 && lastPeriod < maxLength - 1) {\n        summary = summary.substring(0, lastPeriod + 1);\n    }\n\n    return summary.trim();\n}\n\nasync function processArticles() {\n    const results = [];\n\n    for (const item of newsData) {\n        const articles = item.json.rss.channel.item;\n\n        for (const article of articles) {\n            // Start with the cleaned description as fallback\n            let description = article.description.replace(/<[^>]*>/g, '').trim();\n\n            // Try to fetch the actual article content\n            const articleContent = await fetchArticleContent(article.link);\n\n            // Generate a proper summary if we got content\n            if (articleContent) {\n                description = generateSummaryFromContent(articleContent) || description;\n            }\n\n            results.push({\n                json: {\n                    title: article.title,\n                    description: description,\n                    source: article.source._,\n                    pubDate: article.pubDate,\n                    link: article.link,\n                    contentPreview: articleContent ? articleContent.substring(0, 100) + '...' : null,\n                    contentFetched: !!articleContent\n                }\n            });\n        }\n    }\n\n    return results;\n}\n\n// Execute the processing and return the results\nreturn processArticles()\n    .catch(error => {\n        console.error('Error processing articles:', error);\n\n        // Fallback in case of errors\n        const fallbackResults = [];\n        for (const item of newsData) {\n            const articles = item.json.rss.channel.item;\n            for (const article of articles) {\n                fallbackResults.push({\n                    json: {\n                        title: article.title,\n                        description: article.description.replace(/<[^>]*>/g, '').trim(),\n                        source: article.source._,\n                        pubDate: article.pubDate,\n                        link: article.link,\n                        error: 'Could not fetch article content'\n                    }\n                });\n            }\n        }\n        return fallbackResults;\n    });\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        528,
+        1424
+      ],
+      "id": "60a9dba7-39cb-42fa-a253-591aca2fade8",
+      "name": "generate summary of news links"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP 1 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Merge Timeframes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP 15 Minutes": {
+      "main": [
+        [
+          {
+            "node": "Merge Timeframes",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP 1 Hour": {
+      "main": [
+        [
+          {
+            "node": "Merge Timeframes",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "News API": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Dividends": {
+      "main": [
+        [
+          {
+            "node": "Merge Fundamentals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Earnings": {
+      "main": [
+        [
+          {
+            "node": "Merge Fundamentals",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Statistics": {
+      "main": [
+        [
+          {
+            "node": "Merge Fundamentals",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "HTTP Profile": {
+      "main": [
+        [
+          {
+            "node": "Merge Fundamentals",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Merge Fundamentals": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Fundamentals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Fundamentals": {
+      "main": [
+        [
+          {
+            "node": "Process Long-term Metrics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Long-term Metrics": {
+      "main": [
+        [
+          {
+            "node": "Merge Data & Sentiment & Fundamentals",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge Timeframes": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Price Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Price Data": {
+      "main": [
+        [
+          {
+            "node": "Process Candle Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Candle Data": {
+      "main": [
+        [
+          {
+            "node": "Merge Data & Sentiment & Fundamentals",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Data & Sentiment & Fundamentals": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Final Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Final Data": {
+      "main": [
+        [
+          {
+            "node": "AI Financial Analyst",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Financial Analyst",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sentiment Analysis": {
+      "main": [
+        [
+          {
+            "node": "Merge Data & Sentiment & Fundamentals",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP 1 Minutes",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP 15 Minutes",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP 1 Hour",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Dividends",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Earnings",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Statistics",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Profile",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Google News",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "News API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message in Telegram": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Financial Analyst",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Sentiment Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google News": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "generate summary of news links",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate summary of news links": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4252d869-f93d-4d5a-85f6-8a5462c07a7d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9c67e7a6d3ae0982f97a8941f0999af882c7023e582d8a419fe0f93dea92d729"
+  },
+  "id": "XVctt86VyFHRDoXD",
+  "tags": [
+    {
+      "createdAt": "2025-08-19T11:25:35.967Z",
+      "updatedAt": "2025-08-19T11:25:35.967Z",
+      "id": "idxjzvBG8cpREqBD",
+      "name": "Calendar Assistant"
+    },
+    {
+      "createdAt": "2025-08-19T11:25:35.970Z",
+      "updatedAt": "2025-08-19T11:25:35.970Z",
+      "id": "tnHDamIKCpOwb8Kc",
+      "name": "AI Agent"
+    },
+    {
+      "createdAt": "2025-08-19T11:25:35.975Z",
+      "updatedAt": "2025-08-19T11:25:35.975Z",
+      "id": "PcxD2oxKariiE3E9",
+      "name": "Google Integration"
+    }
+  ]
+}
