@@ -12,7 +12,7 @@ Simply message your Telegram bot with a stock ticker (e.g., "AAPL") and receive 
 
 ---
 
----
+
  <p align="center">
   <img src="Images/US%20Stock%20Market%20Analysis%20.png" alt="Workflow 1" width="800">
   
